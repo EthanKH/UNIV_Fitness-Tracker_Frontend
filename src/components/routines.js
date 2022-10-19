@@ -1,3 +1,3 @@
 import React from 'react';
 
-export default register;
+export default routines.js;
