@@ -83,7 +83,7 @@ const App = () => {
         <div>
             <NavBar logout={logout} token={token}/>
             <Routes>
-                <Route path='/' element={<home />} />
+                <Route path='/' element={<Home />} />
                 <Route path='/Routines' element={<Routines routines={routines} token={token} />} />
                 <Route path='/Activities' element={<Activities activities={activities} token={token} />} />
                 <Route path='/MyRoutines' element={<myRoutines myRoutines={myRoutines}/>} />
