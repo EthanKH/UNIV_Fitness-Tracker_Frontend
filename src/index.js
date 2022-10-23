@@ -5,12 +5,13 @@ import {
 } from 'react-router-dom'
 import './style.css';
 import {
-    activities,
-    home,
-    register,
-    login,
-    myRoutines,
-    routines,    
+    Activities,
+    Home,
+    Register,
+    Login,
+    MyRoutines,
+    Routines,  
+    NavBar  
 }  from './components';
 import {
     getActivities,
@@ -37,8 +38,8 @@ const App = () => {
 
     const fetchRoutines = async() => {
         const results = await getRoutines(token)
-        console.log (results)
-        setRoutines(results) //this route may be incorrect, routines may be called something else
+        console.log ("I changed the routines path api", results)
+        setRoutines(results) 
     }
 
     const fetchActivities = async() => {
@@ -80,15 +81,15 @@ const App = () => {
 
     return (
         <div>
-            <Navbar logout={logout} token={token}/>
+            <NavBar logout={logout} token={token}/>
             <Routes>
                 <Route path='/' element={<home />} />
-                <Route path='/routines' element={<routines routines={routines} token={token} />} />
-                <Route path='/activities' element={<activities activities={activities} token={token} />} />
-                <Route path='/myRoutines' element={<myRoutines myRoutines={myRoutines}/>} />
-                <Route path='/register' element={<register 
+                <Route path='/Routines' element={<Routines routines={routines} token={token} />} />
+                <Route path='/Activities' element={<Activities activities={activities} token={token} />} />
+                <Route path='/MyRoutines' element={<myRoutines myRoutines={myRoutines}/>} />
+                <Route path='/Register' element={<register 
                     open={open} 
-                    setOpen={setOpen} 
+                    // setOpen={setOpen} 
                     setMyRoutines={setMyRoutines} 
                     setToken={setToken} 
                     setUsername={setUsername} 
@@ -99,7 +100,7 @@ const App = () => {
                 />
                 <Route path='/login' element={<login 
                     open={open} 
-                    setOpen={setOpen} 
+                    // setOpen={setOpen} 
                     setMyRoutines={setMyRoutines} 
                     setToken={setToken} 
                     setUsername={setUsername} 
@@ -111,12 +112,12 @@ const App = () => {
                 <Route path='/createNewRoutine' 
                 element={<createNewRoutine
                 token={token} navigate={navigate} 
-                open={open} setOpen={setOpen}
+                // open={open} setOpen={setOpen}
                 fetchRoutines={fetchRoutines}/>} />
                 <Route path='/createNewActivity' 
                 element={<createNewActivity
                 token={token} navigate={navigate} 
-                open={open} setOpen={setOpen}
+                // open={open} setOpen={setOpen}
                 fetchActivities={fetchActivities}/>} />
                 <Route path ='/routines/:routineId' element={<singleRoutineView routines={routines} />} />
                 <Route path ='/routines/edit-routine/:routineId' element={<editRoutine routines={routines} token={token} navigate={navigate} fetchRoutines={fetchRoutines}/>} />
