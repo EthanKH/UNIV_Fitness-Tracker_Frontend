@@ -3,7 +3,7 @@ import { registerUser, getMyRoutines } from "../api";
 import { Snackbar } from "@mui/material";
 
 
-const register = ({ setToken, navigate, setUsername, username, setPassword, password, setMyRoutines, setOpen, open, }) => {
+const Register = ({ setToken, navigate, setUsername, username, setPassword, password, setMyRoutines, setOpen, open, }) => {
 
 
     const handleSubmit = async () => {
@@ -12,14 +12,16 @@ const register = ({ setToken, navigate, setUsername, username, setPassword, pass
         if ((password.length >= 6) && (passwordRequirements.test(password))) {
             
             const results = await registerUser(username, password);
+            console.log('register results: ', results)
+            console.log('password is: ', password, 'user is: ', username)
             
             if (results.success) {
-                setToken(results.data.token)
-                window.localStorage.setItem('token', results.data.token) 
-                const userResults = await getMyRoutines(results.data.token)
+                setToken(results.token)
+                window.localStorage.setItem('token', results.token) 
+                const userResults = await getMyRoutines(results.token)
                 let usersRoutines = userResults.data
                 setMyRoutines(usersRoutines)
-                navigate('/myRoutines')
+                navigate('/MyRoutines')
             } else {
                 console.log(results.error)
             }
@@ -74,4 +76,4 @@ const register = ({ setToken, navigate, setUsername, username, setPassword, pass
 }
 
 
-export default register;
+export default Register;

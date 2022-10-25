@@ -27,6 +27,7 @@ const App = () => {
     const [password, setPassword] = useState('');
     const [myRoutines, setMyRoutines] = useState({});
     const [user, setUser] = useState({});
+    const [open, setOpen] = useState(false)
     const navigate = useNavigate();
 
     const logout = () => {
@@ -44,7 +45,7 @@ const App = () => {
 
     const fetchActivities = async() => {
         const results = await getActivities(token)
-        console.log (results)
+        console.log ('activities fetch yields: ', results)
         setActivities(results) //this route may be incorrect, routines may be called something else
     }
 
@@ -85,11 +86,11 @@ const App = () => {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/Routines' element={<Routines routines={routines} token={token} />} />
-                <Route path='/Activities' element={<Activities activities={activities} token={token} />} />
-                <Route path='/MyRoutines' element={<myRoutines myRoutines={myRoutines}/>} />
-                <Route path='/Register' element={<register 
+                <Route path='/Activities' element={<Activities activities={activities} />} />
+                <Route path='/MyRoutines' element={<MyRoutines myRoutines={myRoutines}/>} />
+                <Route path='/Register' element={<Register 
                     open={open} 
-                    // setOpen={setOpen} 
+                    setOpen={setOpen} 
                     setMyRoutines={setMyRoutines} 
                     setToken={setToken} 
                     setUsername={setUsername} 
@@ -98,9 +99,9 @@ const App = () => {
                     password={password} 
                     navigate={navigate}/>} 
                 />
-                <Route path='/login' element={<login 
+                <Route path='/Login' element={<Login 
                     open={open} 
-                    // setOpen={setOpen} 
+                    setOpen={setOpen} 
                     setMyRoutines={setMyRoutines} 
                     setToken={setToken} 
                     setUsername={setUsername} 
@@ -109,20 +110,20 @@ const App = () => {
                     password={password} 
                     navigate={navigate}/>} 
                 />
-                <Route path='/createNewRoutine' 
-                element={<createNewRoutine
+                {/* <Route path='/CreateNewRoutine' 
+                element={<CreateNewRoutine
                 token={token} navigate={navigate} 
                 // open={open} setOpen={setOpen}
                 fetchRoutines={fetchRoutines}/>} />
-                <Route path='/createNewActivity' 
-                element={<createNewActivity
+                <Route path='/CreateNewActivity' 
+                element={<CreateNewActivity
                 token={token} navigate={navigate} 
                 // open={open} setOpen={setOpen}
                 fetchActivities={fetchActivities}/>} />
-                <Route path ='/routines/:routineId' element={<singleRoutineView routines={routines} />} />
-                <Route path ='/routines/edit-routine/:routineId' element={<editRoutine routines={routines} token={token} navigate={navigate} fetchRoutines={fetchRoutines}/>} />
-                <Route path ='/activities/:activityId' element={<singleActivityView activities={activities} />} />
-                <Route path ='/activities/edit-activity/:activityId' element={<editActivity activities={activities} token={token} navigate={navigate} fetchActivities={fetchActivities}/>} />
+                <Route path ='/routines/:routineId' element={<SingleRoutineView routines={routines} />} />
+                <Route path ='/routines/edit-routine/:routineId' element={<EditRoutine routines={routines} token={token} navigate={navigate} fetchRoutines={fetchRoutines}/>} />
+                <Route path ='/activities/:activityId' element={<SingleActivityView activities={activities} />} />
+                <Route path ='/activities/edit-activity/:activityId' element={<EditActivity activities={activities} token={token} navigate={navigate} fetchActivities={fetchActivities}/>} /> */}
            </Routes>
             
         </div>

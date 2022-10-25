@@ -1,7 +1,7 @@
 import React, { Fragment,useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getRoutines } from '../api';
-import './routines.css';
+import './Routines.css';
 
 
 

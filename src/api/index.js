@@ -53,20 +53,26 @@ export const getMyRoutines = async (token, username) => {
 }
 
 export const registerUser = async (username,password) => {
+    console.log('user: ', username, 'password: ', password, 'type of pword: ', typeof password)
     try {
-        const response = await fetch (`${baseURL}/users/register`, {
+        const response = await fetch(`${baseURL}/users/register`, {
             method: "POST",
             headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
             },
             body: JSON.stringify({
             user: {
-                username: username,
-                password: password
+                "username": username,
+                "password": password
             }
             })
+            
         }) 
+        console.log('length of user: ', username.length, 'lenght of password: ', password.length)
+        console.log('response is: ', response)
+       
         const result = await response.json();
+        console.log ('result is: ', result)
 
         return result
 

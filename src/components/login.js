@@ -1,9 +1,9 @@
 import React from 'react';
-import './login.css';
+import './Login.css';
 import { loginUser, getMe } from "../api";
 import { Snackbar } from "@mui/material";
 
-const login = ({setUsername, username, setPassword, password, navigate, setToken, setMyRoutines, setOpen, open}) => {
+const Login = ({setUsername, username, setPassword, password, navigate, setToken, setMyRoutines, setOpen, open}) => {
 
     const handleSubmit = async () => {
         const results = await loginUser(username, password);
@@ -54,4 +54,4 @@ const login = ({setUsername, username, setPassword, password, navigate, setToken
 }
 
 
-export default login;
+export default Login;

@@ -1,5 +1,5 @@
 import React from 'react';
-import './routines.css';
+import './Routines.css';
 
 const MyRoutines = () => {
     return (

@@ -20,6 +20,7 @@ token ?(
         
 <Link class="link" to='/routines/EditRoutine'>Edit Routine</Link>
 <Link class="link" to='/MyRoutines'>My Routines</Link>
+<Link class="link" to='/Activities'>Activities</Link>
 </>
       
 ): (<>
