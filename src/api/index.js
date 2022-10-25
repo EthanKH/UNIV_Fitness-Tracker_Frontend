@@ -35,6 +35,7 @@ export const getRoutines = async () => {
 }
 
 export const getMyRoutines = async (token, username) => {
+    console.log ('in getmyroutines user: ', username, 'token is: ', token)
     try {
         const response = await fetch(`${baseURL}/users/${username}/routines`, {
         headers: {
@@ -42,7 +43,7 @@ export const getMyRoutines = async (token, username) => {
             'Authorization': `Bearer ${token}`
             }})
         const results = await response.json()
-
+        console.log('results in api: ', results)
         return results
 
 
@@ -61,18 +62,14 @@ export const registerUser = async (username,password) => {
             "Content-Type": "application/json",
             },
             body: JSON.stringify({
-            user: {
                 "username": username,
                 "password": password
-            }
+            
             })
             
         }) 
-        console.log('length of user: ', username.length, 'lenght of password: ', password.length)
-        console.log('response is: ', response)
        
         const result = await response.json();
-        console.log ('result is: ', result)
 
         return result
 
@@ -89,10 +86,8 @@ export const loginUser = async (username,password) => {
             'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-            user: {
                 username: username,
                 password: password
-            }
             })
         }) 
         const result = await response.json();
@@ -166,7 +161,7 @@ export const deleteActivityFromRoutine = async (routineActivityId, token) => {
     }
 }
 
-export const getMe = async () => {
+export const getMe = async (token) => {
     try {
         const response = await fetch(`${baseURL}/users/me`, {
         headers: {

@@ -1,19 +1,21 @@
 import React from 'react';
 import './Login.css';
-import { loginUser, getMe } from "../api";
+import { loginUser, getMe, getMyRoutines } from "../api";
 import { Snackbar } from "@mui/material";
 
-const Login = ({setUsername, username, setPassword, password, navigate, setToken, setMyRoutines, setOpen, open}) => {
+const Login = ({setUsername, username, setPassword, password, navigate, setToken, setMyRoutines, setOpen, open, token}) => {
 
     const handleSubmit = async () => {
         const results = await loginUser(username, password);
+        console.log('results submitting user: ', results)
+
         
-        if (results.success) {
-            setToken(results.data.token)
-            window.localStorage.setItem('token', results.data.token) 
-            const userResults = await getMe(results.data.token)
-            let me = userResults.data
-            setMyRoutines(me)
+        if (results.token) {
+            setToken(results.token)
+            window.localStorage.setItem('token', results.token) 
+            const userResults = await getMe(results.token)
+            console.log ('token is: ', results.token, 'user is: ', userResults.username)
+            setMyRoutines(await getMyRoutines(results.token, username))
             navigate('/myRoutines') 
         } else {
             setOpen(true)

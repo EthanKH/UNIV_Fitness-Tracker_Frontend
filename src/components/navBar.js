@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-const Navbar = ({ logout, token }) => {
+const NavBar = ({ logout, token }) => {
   return (
     <header>
       <nav class="navbar">
@@ -36,4 +36,4 @@ token ?(
   )
 }
 
-export default Navbar;
+export default NavBar;

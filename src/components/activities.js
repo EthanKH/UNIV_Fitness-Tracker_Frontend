@@ -29,8 +29,8 @@ const Activities = (props) => {
                     </div>
                 
             {activities.map(activity => {
-                    const {description, name} = post;
-                    return <div key={_id} className='Activity'>
+                    const {description, name, id} = activity;
+                    return <div key={id} className='Activity'>
                             <h3>{name}</h3>
                             <p>{description}</p>
                         </div>}

@@ -16,7 +16,8 @@ import {
 import {
     getActivities,
     getMyRoutines,
-    getRoutines
+    getRoutines,
+    getMe
 } from './api'
 
 const App = () => {
@@ -59,11 +60,14 @@ const App = () => {
             }
             return
         }
-        const usersRoutines = await getMyRoutines(token)
-        if (usersRoutines.success) {
-            setMyRoutines(usersRoutines.data);
+        const user = await getMe(token)
+        setUser(user)
+        const usersRoutines = await getMyRoutines(token, user.username)
+        console.log ('usersRoutines: ', usersRoutines)
+        if (usersRoutines.id) {
+            setMyRoutines(usersRoutines);
         } else {
-            console.log(usersRoutines.error.message);
+            console.log("error finding users routines");
         }
     }
    
@@ -104,6 +108,7 @@ const App = () => {
                     setOpen={setOpen} 
                     setMyRoutines={setMyRoutines} 
                     setToken={setToken} 
+                    token={token}
                     setUsername={setUsername} 
                     username={username} 
                     setPassword={setPassword} 

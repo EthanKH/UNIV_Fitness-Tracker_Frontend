@@ -15,15 +15,15 @@ const Register = ({ setToken, navigate, setUsername, username, setPassword, pass
             console.log('register results: ', results)
             console.log('password is: ', password, 'user is: ', username)
             
-            if (results.success) {
+            if (results.token) {
                 setToken(results.token)
                 window.localStorage.setItem('token', results.token) 
-                const userResults = await getMyRoutines(results.token)
+                const userResults = await getMyRoutines(results.token, username)
                 let usersRoutines = userResults.data
                 setMyRoutines(usersRoutines)
                 navigate('/MyRoutines')
             } else {
-                console.log(results.error)
+                console.log("error registering user")
             }
         } else {
             let form = document.querySelector("form")
