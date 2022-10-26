@@ -8,65 +8,53 @@ import './Routines.css';
 
 
 const Routines = ({ routines }) => {
-    const [searchTerm, setSearchTerm] = useState('');
-    
-    // function RoutineMatches(routine, string) {
-    //     const{ title, description} = routines;
-    
-    //     if (title.toLowerCase().includes(string.toLowerCase()) || description.toLowerCase().includes(string.toLowerCase())) {
-    //         return routine;
-    //     }
-    //   // return true if any of the fields you want to check against include the text
-    //   // strings have an .includes() method 
-    // }
-    
-    // const filteredRoutines = routines.filter(routine => RoutineMatches(routine, searchTerm));
-    // const RoutinesToDisplay = searchTerm.length ? filteredRoutines : routines;
+    const [searchTerm, setSearchTerm] = useState('')
+
+
+    const routineMatches = (routine, string) => {
+        const {name, goal} = routine;
+        
+        if (name.toLowerCase().includes(string.toLowerCase()) || goal.toLowerCase().includes(string.toLowerCase())) {
+            return routine
+        }
+        }
+
+      const filteredRoutines = routines.filter(routine => routineMatches(routine, searchTerm));
+      const routinesToDisplay = searchTerm.length ? filteredRoutines : routines
     
     
 
     return (
-        <div>
-        
-      {/* <div>
-            <form onSubmit={(event) => {
-                event.preventDefault();
-            }}> 
-              <input
-               type = 'text'
-               placeholder = 'Search'
-               onChange = {(event) => setSearchTerm(event.target.value)}
-              ></input>
-              <button type='Search'>Search</button>
-             </form>
+        <main>
+            <div className="routineAndSearch">
+                <h1 className='routineHeader'>ROUTINES</h1>
+                <form className="RoutinesList" onSubmit = {(event)=> {
+                    event.preventDefault();    
+                    }
+                    }>
+                    <input className='routinesSearchBar'
+                    type='text'
+                    placeholder="search"
+                    onChange = {(event) => setSearchTerm(event.target.value)}
+                    ></input>
+                </form>
             </div>
-        
-        <div class="posts">  */}
-        {
-           routines.map((routine) => {
+            <div className="routinesContainer">
+           {routinesToDisplay.map((routine) => {
                const {creatorName, name, goal, isPublic} = routine;
+               if (isPublic) {
              return (
-                 <div class='card' key={routine.id} >
-             <h3>{creatorName}</h3>
-             <p>Routine Name: {name}</p>
-             <p>goal: {goal}</p>
-            
-             {
-                 isPublic ? (
-                     <div>
-            
-                    <Link to={`/Routines/EditRoutine/${routine.id}`}>Edit</Link>
-                    </div>
-                 ) :(<div> <Link to={`/Routines/${routine.id}`}>View</Link>
-                      </div>
-                 )
-             }
-             </div>
-             )  
-           }) 
-        }
+                 <div class='routineCard' key={routine.id} >
+                    <h3>{creatorName}</h3>
+                    <p>Routine Name: {name}</p>
+                    <p>goal: {goal}</p>
+                </div>
+                )
+               }
+            })  
+           } 
         </div>
-    
+          </main> 
     )
 }
 
