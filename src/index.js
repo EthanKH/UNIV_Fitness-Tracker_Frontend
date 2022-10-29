@@ -93,7 +93,7 @@ const App = () => {
                 <Route path='/Activities' element={<Activities activities={activities} />} />
                 <Route path='/MyRoutines' element={<MyRoutines myRoutines={myRoutines}/>} />
                 <Route path='/EditActivity/:activityID' element={<EditActivity fetchActivities={fetchActivities} activities={activities} navigate={navigate}/>}/>
-                <Route path='/CreateNewActivity' element={<CreateNewActivity activities={activities} navigate={navigate}/>} />
+                <Route path='/CreateNewActivity' element={<CreateNewActivity activities={activities} navigate={navigate} fetchActivities={fetchActivities} token={token}/>} />
                 <Route path='/Register' element={<Register 
                     open={open} 
                     setOpen={setOpen} 

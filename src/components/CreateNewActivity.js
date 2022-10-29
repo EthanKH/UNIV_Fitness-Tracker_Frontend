@@ -1,12 +1,13 @@
+import  {React, useState } from 'react';
+import {createActivity} from '../api'
+import { useParams } from 'react-router-dom';
 
-import { createActivity } from '../api';
-import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
 
 
 
 
 const CreateNewActivity = ({ token,fetchActivities, navigate }) => {
+    console.log(fetchActivities, "is fetch working")
  const [name, setName] = useState('');
 const [description, setDescription] = useState('');
 
@@ -16,10 +17,10 @@ const [description, setDescription] = useState('');
     }
   
   async function addActivity() {
-    const result = await createActivity(token, newPost)
-    console.log(result)
+    const result = await createActivity(token, newActivity)
+    console.log("result of new activity",result)
     fetchActivities();
-    navigate('/Activities')
+    navigate('/activities')
   }
   
   return (
