@@ -13,8 +13,9 @@ import {
     Routines,  
     NavBar,  
     EditActivity,
-    CreateNewActivity;
-    CreateRoutine
+    CreateNewActivity,
+    CreateRoutine,
+    EditRoutine
 }  from './components';
 import {
     getActivities,
@@ -89,13 +90,7 @@ const App = () => {
                 <Route path='/' element={<Home />} />
                 <Route path='/Routines' element={<Routines routines={routines} token={token} />} />
                 <Route path='/Activities' element={<Activities activities={activities} />} />
-<<<<<<< HEAD
                 <Route path='/MyRoutines' element={<MyRoutines myRoutines={myRoutines} token={token} activities={activities} getUsersRoutines={getUsersRoutines}/>} />
-=======
-                <Route path='/MyRoutines' element={<MyRoutines myRoutines={myRoutines}/>} />
-                <Route path='/EditActivity/:activityID' element={<EditActivity fetchActivities={fetchActivities} activities={activities} navigate={navigate}/>}/>
-                <Route path='/CreateNewActivity' element={<CreateNewActivity activities={activities} navigate={navigate} fetchActivities={fetchActivities} token={token}/>} />
->>>>>>> 73799ea8a688ce32708ef292fd79c8e346c58ce0
                 <Route path='/Register' element={<Register 
                     open={open} 
                     setOpen={setOpen} 
@@ -123,7 +118,9 @@ const App = () => {
                 element={<CreateRoutine
                 token={token} navigate={navigate} 
                 getUsersRoutines={getUsersRoutines} activities={activities}/>} />
-                <Route path ='/routines/edit-routine/:routineId' element={<EditRoutine routines={routines} token={token} navigate={navigate} fetchRoutines={fetchRoutines}/>} />
+                <Route path ='/EditRoutine/:routineId' element={<EditRoutine routines={routines} token={token} navigate={navigate} getUsersRoutines={getUsersRoutines}/>} />
+                <Route path='/EditActivity/:activityID' element={<EditActivity fetchActivities={fetchActivities} activities={activities} navigate={navigate}/>}/>
+                <Route path='/CreateNewActivity' element={<CreateNewActivity activities={activities} navigate={navigate} fetchActivities={fetchActivities} token={token}/>} />
            </Routes>
             
         </div>

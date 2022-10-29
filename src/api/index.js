@@ -221,6 +221,7 @@ export const updateActivity = async (token, activityId, name, description) => {
 }
 
 export const updateRoutine = async (token, routineId, name, goal, isPublic) => {
+    
     try {
         const response = await fetch(`${baseURL}/routines/${routineId}`, {
             method: "PATCH",
@@ -235,6 +236,7 @@ export const updateRoutine = async (token, routineId, name, goal, isPublic) => {
             })
         })
         const result = await response.json();
+        console.log ('result in api: ', result)
 
         return result
 

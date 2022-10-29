@@ -26,6 +26,11 @@ const MyRoutines = ({myRoutines, token, activities, getUsersRoutines}) => {
                        <div key={id} className="myRoutine">
                             <h3>{name}</h3>
                             <p>{goal}</p>
+                            <button>
+                            <Link to={`/EditRoutine/${routine.id}`}>Edit</Link> {/**this page should allow us to edit count and duration of activity for routine*/ }
+                            </button>
+                            <button onClick={(event) => {event.preventDefault(); deleteRoutine(routine.id,token); getUsersRoutines()}
+                                    }>Delete</button>
                             <div className='activitiesForMyRoutine'>
                             {routine.activities.map (activity => {
                                 const {name, description, duration, count} = activity
@@ -80,13 +85,6 @@ const MyRoutines = ({myRoutines, token, activities, getUsersRoutines}) => {
                                 </span>
                             <button>Done</button>
                             </form>
-                                
-                            
-                                <button>
-                                    <Link to={`/routines/${id}`}>Edit</Link> {/**this page should allow us to edit count and duration of activity for routine*/ }
-                                </button>
-                            <button onClick={(event) => {event.preventDefault(); deleteRoutine(id,token)}
-                                    }>Delete</button>
                             </div>
                         </div>
                      </div>
