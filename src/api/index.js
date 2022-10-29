@@ -176,7 +176,9 @@ export const getMe = async (token) => {
     }    
 }
 
-export const createActivity = async (token, name, description) => {
+export const createActivity = async (token,activity) => {
+    console.log(token,activity
+        ,"testing api activity")
     try {
         const response = await fetch(`${baseURL}/activities`, {
             method: "POST",
@@ -184,10 +186,7 @@ export const createActivity = async (token, name, description) => {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({
-                name, 
-                description,
-            })
+            body: JSON.stringify(activity)
         })
         const result = await response.json();
 
@@ -195,6 +194,7 @@ export const createActivity = async (token, name, description) => {
 
     } catch (error) {
         console.log('error, unable to create new activity')
+
     }
 }
 

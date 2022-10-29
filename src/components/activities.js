@@ -34,7 +34,9 @@ const Activities = (props) => {
                         ></input>
                         <button className="createActivityButton">
                             <Link to='/createNewActivity'>Create Activity</Link>
+
                         </button>
+                       
                     </form>
                 </div>
                 <div className="activitiesContainer">
@@ -43,10 +45,17 @@ const Activities = (props) => {
                 return <div key={id} className='Activity'>
                         <h3>{name}</h3>
                         <p className='description'>{description}</p>
+                        <Link to={`/EditActivity/${activity.id}`}>Edit Activity</Link> 
+                        
+                        
                         </div>
                         })
                 }
-                </div>     
+              
+                </div>  
+            
+               
+               
          </main>
         )
         }

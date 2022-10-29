@@ -3,3 +3,11 @@
     background-color: black;
     color: pink;
 }
+h1{
+    
+    text-align: center;
+}
+.home{
+    display: flex;
+    align-items: center;
+flex-direction: column;}

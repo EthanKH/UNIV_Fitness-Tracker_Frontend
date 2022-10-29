@@ -1,7 +1,7 @@
 import React from 'react';
 import { registerUser, getMyRoutines } from "../api";
 import { Snackbar } from "@mui/material";
-
+import './Register.css';
 
 const Register = ({ setToken, navigate, setUsername, username, setPassword, password, setMyRoutines, setOpen, open, }) => {
 
@@ -50,6 +50,7 @@ const Register = ({ setToken, navigate, setUsername, username, setPassword, pass
                 onClose={() => setOpen(false)}
                 >
             </Snackbar>
+            <div className="registerForm">
             <input className="setUsernameEntry"
             type='text'
             placeholder="Enter Username"
@@ -71,6 +72,7 @@ const Register = ({ setToken, navigate, setUsername, username, setPassword, pass
             </ul>
 
             <button type='submit'>Submit</button>
+            </div>
         </form>
     )
 }
