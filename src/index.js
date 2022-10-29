@@ -11,7 +11,9 @@ import {
     Login,
     MyRoutines,
     Routines,  
-    NavBar  
+    NavBar,  
+    EditActivity,
+    CreateNewActivity
 }  from './components';
 import {
     getActivities,
@@ -72,17 +74,15 @@ const App = () => {
     }
    
 
-    useEffect (() => {
-        fetchRoutines()
-    },[token])
+   
 
     useEffect (() => {
         fetchActivities()
+        getUsersRoutines();
+        fetchRoutines()
     },[token])
 
-    useEffect ( () => {
-        getUsersRoutines();
-    }, [token])
+  
 
     return (
         <div>
@@ -92,6 +92,8 @@ const App = () => {
                 <Route path='/Routines' element={<Routines routines={routines} token={token} />} />
                 <Route path='/Activities' element={<Activities activities={activities} />} />
                 <Route path='/MyRoutines' element={<MyRoutines myRoutines={myRoutines}/>} />
+                <Route path='/EditActivity/:activityID' element={<EditActivity fetchActivities={fetchActivities} activities={activities} navigate={navigate}/>}/>
+                <Route path='/CreateNewActivity' element={<CreateNewActivity activities={activities} navigate={navigate}/>} />
                 <Route path='/Register' element={<Register 
                     open={open} 
                     setOpen={setOpen} 

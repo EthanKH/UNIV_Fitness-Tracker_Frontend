@@ -1,4 +1,4 @@
-import React, { Fragment,useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getRoutines } from '../api';
 import './Routines.css';
@@ -12,55 +12,73 @@ const Routines = ({ routines }) => {
 
 
     const routineMatches = (routine, string) => {
-        const {name, goal} = routine;
-        
+        const { name, goal } = routine;
+
         if (name.toLowerCase().includes(string.toLowerCase()) || goal.toLowerCase().includes(string.toLowerCase())) {
             return routine
         }
-        }
+    }
 
-      const filteredRoutines = routines.filter(routine => routineMatches(routine, searchTerm));
-      const routinesToDisplay = searchTerm.length ? filteredRoutines : routines
-    
-    
+    const filteredRoutines = routines.filter(routine => routineMatches(routine, searchTerm));
+    const routinesToDisplay = searchTerm.length ? filteredRoutines : routines
+
+
 
     return (
         <main>
             <div className="routineAndSearch">
                 <h1 className='routineHeader'>ROUTINES</h1>
-                <form className="RoutinesList" onSubmit = {(event)=> {
-                    event.preventDefault();    
-                    }
-                    }>
+                <form className="RoutinesList" onSubmit={(event) => {
+                    event.preventDefault();
+                }
+                }>
                     <input className='routinesSearchBar'
-                    type='text'
-                    placeholder="search"
-                    onChange = {(event) => setSearchTerm(event.target.value)}
+                        type='text'
+                        placeholder="search"
+                        onChange={(event) => setSearchTerm(event.target.value)}
                     ></input>
                 </form>
             </div>
             <div className="routinesContainer">
-           {routinesToDisplay.map((routine) => {
-               const {creatorName, name, goal, isPublic} = routine;
-               if (isPublic) {
-             return (
-                 <div class='routineCard' key={routine.id} >
-                    <h3>{creatorName}</h3>
-                    <p>Routine Name: {name}</p>
-                    <p>goal: {goal}</p>
-                </div>
-                )
-               }
-            })  
-           } 
-        </div>
-          </main> 
+                {routinesToDisplay.map((routine) => {
+                    const { creatorName, name, goal, isPublic, activities } = routine;
+                    if (isPublic) {
+                        return (
+                            <div className='routineCard' key={routine.id} >
+                                <h3>{creatorName}</h3>
+                                <p>Routine Name: {name}</p>
+                                <p>goal: {goal}</p>
+                                {
+                                    activities.map((activity) => {
+                                        const { name, description, id } = activity;
+                                        if (isPublic) {
+                                            return (
+                                                <div className="activitiesCard" key={routine.id}>
+                                                    <h3>Activity Name{name}</h3>
+                                                    <p>Activity Name: {description}</p>
+                                                </div>
+
+                                            )
+                                        }
+                                    })
+                                }
+
+                            </div>
+
+                        )
+                    }
+                })
+                }
+            </div>
+
+
+        </main>
     )
 }
 
-    
-    
 
-    
+
+
+
 
 export default Routines;
