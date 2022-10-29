@@ -5,4 +5,5 @@ export {default as Activities} from "./Activities";
 export {default as Routines} from "./Routines";
 export {default as MyRoutines} from "./MyRoutines";
 export {default as NavBar} from "./NavBar";
-// export {default as EditRoutine} from "./EditRoutine"
+export {default as CreateRoutine} from "./CreateRoutine";
+export {default as EditRoutine} from "./EditRoutine"

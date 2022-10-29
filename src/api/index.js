@@ -43,7 +43,7 @@ export const getMyRoutines = async (token, username) => {
             'Authorization': `Bearer ${token}`
             }})
         const results = await response.json()
-        console.log('results in api: ', results)
+
         return results
 
 
@@ -54,7 +54,6 @@ export const getMyRoutines = async (token, username) => {
 }
 
 export const registerUser = async (username,password) => {
-    console.log('user: ', username, 'password: ', password, 'type of pword: ', typeof password)
     try {
         const response = await fetch(`${baseURL}/users/register`, {
             method: "POST",
@@ -261,6 +260,7 @@ export const getRoutinesForActivity = async (activityId) => {
 }
 
 export const attachActivityToRoutine = async (token, routineId, activityId, count, duration) => {
+
     try {
         const response = await fetch(`${baseURL}/routines/${routineId}/activities`, {
             method: "POST",

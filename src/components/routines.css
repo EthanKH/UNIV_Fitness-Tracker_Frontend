@@ -1,5 +1,24 @@
-*{
+/* *{
     font-family: Arial, Helvetica, sans-serif;
     background-color: black;
     color: pink;
+} */
+
+.routinesCard{
+    background-color: pink;
+    color:black;
+    margin: none;
+    border: solid 2px hot palevioletred; 
+}
+
+/* .activitiesCard{
+    background-color: green;
+    color:pink;
+    margin: none;
+    border: solid 2px pink; 
+} */
+.activitiesCard:nth-child(even){
+   
+    margin: none;
+    border: solid 2px pink; 
 }

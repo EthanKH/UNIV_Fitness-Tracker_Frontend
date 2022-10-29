@@ -11,7 +11,9 @@ import {
     Login,
     MyRoutines,
     Routines,  
-    NavBar  
+    NavBar,
+    CreateRoutine,
+    EditRoutine  
 }  from './components';
 import {
     getActivities,
@@ -26,7 +28,7 @@ const App = () => {
     const [activities, setActivities] = useState([]);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [myRoutines, setMyRoutines] = useState({});
+    const [myRoutines, setMyRoutines] = useState([]);
     const [user, setUser] = useState({});
     const [open, setOpen] = useState(false)
     const navigate = useNavigate();
@@ -40,13 +42,11 @@ const App = () => {
 
     const fetchRoutines = async() => {
         const results = await getRoutines(token)
-        console.log ("I changed the routines path api", results)
         setRoutines(results) 
     }
 
     const fetchActivities = async() => {
         const results = await getActivities(token)
-        console.log ('activities fetch yields: ', results)
         setActivities(results) //this route may be incorrect, routines may be called something else
     }
 
@@ -63,8 +63,7 @@ const App = () => {
         const user = await getMe(token)
         setUser(user)
         const usersRoutines = await getMyRoutines(token, user.username)
-        console.log ('usersRoutines: ', usersRoutines)
-        if (usersRoutines.id) {
+        if (usersRoutines) {
             setMyRoutines(usersRoutines);
         } else {
             console.log("error finding users routines");
@@ -91,7 +90,7 @@ const App = () => {
                 <Route path='/' element={<Home />} />
                 <Route path='/Routines' element={<Routines routines={routines} token={token} />} />
                 <Route path='/Activities' element={<Activities activities={activities} />} />
-                <Route path='/MyRoutines' element={<MyRoutines myRoutines={myRoutines}/>} />
+                <Route path='/MyRoutines' element={<MyRoutines myRoutines={myRoutines} token={token} activities={activities} getUsersRoutines={getUsersRoutines}/>} />
                 <Route path='/Register' element={<Register 
                     open={open} 
                     setOpen={setOpen} 
@@ -115,20 +114,11 @@ const App = () => {
                     password={password} 
                     navigate={navigate}/>} 
                 />
-                {/* <Route path='/CreateNewRoutine' 
-                element={<CreateNewRoutine
+                <Route path='/CreateRoutine' 
+                element={<CreateRoutine
                 token={token} navigate={navigate} 
-                // open={open} setOpen={setOpen}
-                fetchRoutines={fetchRoutines}/>} />
-                <Route path='/CreateNewActivity' 
-                element={<CreateNewActivity
-                token={token} navigate={navigate} 
-                // open={open} setOpen={setOpen}
-                fetchActivities={fetchActivities}/>} />
-                <Route path ='/routines/:routineId' element={<SingleRoutineView routines={routines} />} />
+                getUsersRoutines={getUsersRoutines} activities={activities}/>} />
                 <Route path ='/routines/edit-routine/:routineId' element={<EditRoutine routines={routines} token={token} navigate={navigate} fetchRoutines={fetchRoutines}/>} />
-                <Route path ='/activities/:activityId' element={<SingleActivityView activities={activities} />} />
-                <Route path ='/activities/edit-activity/:activityId' element={<EditActivity activities={activities} token={token} navigate={navigate} fetchActivities={fetchActivities}/>} /> */}
            </Routes>
             
         </div>
