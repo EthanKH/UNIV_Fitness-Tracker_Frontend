@@ -8,4 +8,11 @@ nav{
     height: 5rem;
     text-align: center;
     margin: 0px;
+    border-radius: 25px;
+}
+.link{
+    border-radius: 25px;
+    padding-top: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
 }

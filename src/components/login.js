@@ -38,6 +38,7 @@ const Login = ({setUsername, username, setPassword, password, navigate, setToken
                 onClose={() => setOpen(false)}
                 >
             </Snackbar>
+            <div className="loginForm">
             <input className="usernameEntry"
             type='text'
             placeholder="Enter Username"
@@ -51,6 +52,7 @@ const Login = ({setUsername, username, setPassword, password, navigate, setToken
 
 
             <button type='submit'>Submit</button>
+            </div>
         </form>
     )
 }
