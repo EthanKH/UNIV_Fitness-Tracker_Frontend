@@ -12,8 +12,25 @@
     padding: 10px;
     margin: 3px;
 }
-.registerForm{
+.registerForm {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-items: center;
+    width: 100%;
+    margin: 2em;
+
+}
+
+.enterInfoRegister {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+
+}
+
+.enterInfoRegister > input {
+    margin: .5rem;
+    
 }

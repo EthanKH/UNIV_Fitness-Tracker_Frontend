@@ -37,7 +37,7 @@ const Register = ({ setToken, navigate, setUsername, username, setPassword, pass
 
 
     return (
-        <form onSubmit = {(event)=> {
+        <form className='registerForm' onSubmit = {(event)=> {
             event.preventDefault()
                 handleSubmit()
             }
@@ -50,7 +50,7 @@ const Register = ({ setToken, navigate, setUsername, username, setPassword, pass
                 onClose={() => setOpen(false)}
                 >
             </Snackbar>
-            <div className="registerForm">
+            <div className="enterInfoRegister">
             <input className="setUsernameEntry"
             type='text'
             placeholder="Enter Username"
@@ -65,7 +65,7 @@ const Register = ({ setToken, navigate, setUsername, username, setPassword, pass
             <h4>Password Requirements:</h4>
             <ul className="passwordRulesList">
                 <li className="passwordRule">Must be at least 6 characters in length</li>
-                <li className="passwordRule">Must contain a capitol letter</li>
+                <li className="passwordRule">Must contain a capital letter</li>
                 <li className="passwordRule">Must contain a lowercase letter</li>
                 <li className="passwordRule">Must include a number</li>
                 <li className="passwordRule">Must include a special character</li>

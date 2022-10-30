@@ -16,4 +16,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-items: center;
+    margin: 2rem;
+}
+
+.loginForm > * {
+    width: 40%;
+    margin: 1em;
+}
+
+.loginForm > input {
+    margin: .5rem;
 }
