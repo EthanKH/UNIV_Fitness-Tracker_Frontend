@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { updateRoutine, deleteRoutine } from '../api';
+import './EditRoutine.css'
 
 const EditRoutine = ({token, navigate, getUsersRoutines, myRoutines}) => {
     const { routineId } = useParams();
@@ -21,30 +22,37 @@ const EditRoutine = ({token, navigate, getUsersRoutines, myRoutines}) => {
     }
 
     return (
-        <form className='EditRoutineForm' onSubmit={(event) => {
-            event.preventDefault();
-            editRoutine()
-        }}>
-            <input
-            type='text'
-            placeholder={newName}
-            onChange={(event)=> {setNewName(event.target.value)}}
-            />
-            <input
-            type='text'
-            placeholder={newGoal}
-            onChange={(event)=> {setNewGoal(event.target.value)}}
-            />
-            <div className='publicEdit'>
-                <h3>Make Public?</h3>
-                <input className="checkBox"
-                type='checkbox'
-                onChange ={event => setIsPublic(true)} >
-                </input>
-            </div>
-            
-        <button type='submit'>Update Routine</button>
-        </form>
+        <main>
+        <h1>Edit Routine</h1>
+            <form className='EditRoutineForm' onSubmit={(event) => {
+                event.preventDefault();
+                editRoutine()
+            }}>
+                <div className="EditRoutineInput">
+                    <input
+                    type='text'
+                    placeholder={newName}
+                    onChange={(event)=> {setNewName(event.target.value)}}
+                    />
+                </div>
+                <div className="EditRoutineInput">
+                    <input
+                    type='text'
+                    placeholder={newGoal}
+                    onChange={(event)=> {setNewGoal(event.target.value)}}
+                    />
+                </div>
+                <div className='EditRoutineInput'>
+                    <h3>Make Public?</h3>
+                    <input className="checkBox"
+                    type='checkbox'
+                    onChange ={event => setIsPublic(true)} >
+                    </input>
+                </div>
+                
+            <button type='submit'>Update Routine</button>
+            </form>
+          </main>  
         )
 }
 

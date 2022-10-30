@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { createRoutine } from "../api";
 import { Snackbar } from "@mui/material";
+import './CreateRoutine.css'
 
 const CreateRoutine = ({token, navigate, open, setOpen, getUsersRoutines }) => {
     const [name, setName] = useState('')

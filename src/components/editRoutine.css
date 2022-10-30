@@ -1,16 +1,26 @@
+h1 {
+    font-size: 2em;
+}
+
 .EditRoutineForm {
     display: flex;
     flex-direction: column;
     justify-items: center;
     align-items: center;
-    margin: 3%;
+    font-size: 1.3em;
+    width: 100%;
+
 }
 
-.EditRoutineForm > input {
-    margin: 3%;
-}
-
-.publicEdit {
+.EditRoutineInput {
     display: flex;
     flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    margin-right: 0;
+    margin: 1rem;
+}
+
+h3 {
+   margin-right:.5em ;
 }
