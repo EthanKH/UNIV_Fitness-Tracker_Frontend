@@ -1,0 +1,25 @@
+h1 {
+    font-size: 4em;
+}
+
+.routineSubmitForm {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    font-size: 1.3em;
+    width: 100%;
+
+}
+
+.newRoutineInput {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    margin-right: 0;
+}
+
+h3 {
+   margin-right:.5em ;
+}

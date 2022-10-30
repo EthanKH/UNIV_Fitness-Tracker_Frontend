@@ -1,0 +1,16 @@
+.EditRoutineForm {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    margin: 3%;
+}
+
+.EditRoutineForm > input {
+    margin: 3%;
+}
+
+.publicEdit {
+    display: flex;
+    flex-direction: row;
+}

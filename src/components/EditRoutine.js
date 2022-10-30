@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { updateRoutine, deleteRoutine } from '../api';
 
-const EditRoutine = ({routines, token, navigate, getUsersRoutines}) => {
+const EditRoutine = ({token, navigate, getUsersRoutines, myRoutines}) => {
     const { routineId } = useParams();
+    const routines = myRoutines
 
     const [currentRoutine] =  routines.filter(routine => routine.id === parseInt(routineId)); //this returns array of 1 item
+    console.log('currentRoutine is: ', currentRoutine)
     const {name, goal} = currentRoutine;
 
     const [newName, setName] = useState(name);
@@ -19,7 +21,7 @@ const EditRoutine = ({routines, token, navigate, getUsersRoutines}) => {
     }
 
     return (
-        <form onSubmit={(event) => {
+        <form className='EditRoutineForm' onSubmit={(event) => {
             event.preventDefault();
             editRoutine()
         }}>
@@ -33,11 +35,13 @@ const EditRoutine = ({routines, token, navigate, getUsersRoutines}) => {
             placeholder={newGoal}
             onChange={(event)=> {setNewGoal(event.target.value)}}
             />
-            <h3>Make Public?</h3>
-            <input className="checkBox"
-            type='checkbox'
-            onChange ={event => setIsPublic(true)} >
-            </input>
+            <div className='publicEdit'>
+                <h3>Make Public?</h3>
+                <input className="checkBox"
+                type='checkbox'
+                onChange ={event => setIsPublic(true)} >
+                </input>
+            </div>
             
         <button type='submit'>Update Routine</button>
         </form>
