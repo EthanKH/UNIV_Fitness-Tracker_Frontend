@@ -26,7 +26,9 @@ async function editActivity() {
     }
    
     
-    await updateActivity(token,updatedActivity,activityID)
+    
+    const results= await updateActivity(token,updatedActivity,activityID)
+    console.log(results)
     fetchActivities();
     navigate('/activities')
    
@@ -45,14 +47,14 @@ async function editActivity() {
     <input 
       className="createPost"
         type='text'
-        placeholder={name}
+        placeholder={newname}
         onChange={(event) => setNewName(event.target.value)}
       />
        <input 
       className="createPost"
       id='description'
         type='text'
-        placeholder={description}
+        placeholder={newdescription}
         onChange={(event) => setNewDescription(event.target.value)}
       />
     {/* <button type="submit">Edit Activity</button> */}

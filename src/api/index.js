@@ -198,7 +198,7 @@ export const createActivity = async (token,activity) => {
     }
 }
 
-export const updateActivity = async (token, activityId, name, description) => {
+export const updateActivity = async (token,{name, description}, activityId) => {
     try {
         const response = await fetch(`${baseURL}/activities/${activityId}`, {
             method: "PATCH",
