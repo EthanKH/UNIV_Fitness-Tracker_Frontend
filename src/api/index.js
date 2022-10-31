@@ -35,7 +35,7 @@ export const getRoutines = async () => {
 }
 
 export const getMyRoutines = async (token, username) => {
-    console.log ('in getmyroutines user: ', username, 'token is: ', token)
+ 
     try {
         const response = await fetch(`${baseURL}/users/${username}/routines`, {
         headers: {
@@ -143,6 +143,7 @@ export const deleteRoutine = async (routineId, token) => {
 
 
 export const deleteActivityFromRoutine = async (routineActivityId, token) => {
+
     try {
         const response = await fetch(`${baseURL}/routine_activities/${routineActivityId}`, {
         method: "DELETE",
@@ -177,8 +178,7 @@ export const getMe = async (token) => {
 }
 
 export const createActivity = async (token,activity) => {
-    console.log(token,activity
-        ,"testing api activity")
+
     try {
         const response = await fetch(`${baseURL}/activities`, {
             method: "POST",
@@ -236,7 +236,7 @@ export const updateRoutine = async (token, routineId, name, goal, isPublic) => {
             })
         })
         const result = await response.json();
-        console.log ('result in api: ', result)
+
 
         return result
 
@@ -286,8 +286,9 @@ export const attachActivityToRoutine = async (token, routineId, activityId, coun
 }
 
 export const updateActivityForRoutine = async (token, routineActivityId, count, duration) => {
+    console.log('token: ', token, 'routineActId: ', routineActivityId, 'count: ', count, 'duration: ', duration)
     try {
-        const response = await fetch(`${baseURL}/routines/${routineActivityId}`, {
+        const response = await fetch(`${baseURL}/routine_activities/${routineActivityId}`, {
             method: "PATCH",
             headers: {
               'Content-Type': 'application/json',
@@ -299,7 +300,7 @@ export const updateActivityForRoutine = async (token, routineActivityId, count, 
             })
         })
         const result = await response.json();
-
+        console.log('result is: ', result)
         return result
 
     } catch (error) {
