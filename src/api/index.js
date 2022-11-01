@@ -1,4 +1,4 @@
-const baseURL = 'http://fitnesstrac-kr.herokuapp.com/api'
+const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api'
 
 export const getActivities = async () => {
     try {

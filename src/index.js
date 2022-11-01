@@ -15,7 +15,8 @@ import {
     EditActivity,
     CreateNewActivity,
     CreateRoutine,
-    EditRoutine
+    EditRoutine,
+    EditActivityForRoutine
 }  from './components';
 import {
     getActivities,
@@ -119,6 +120,7 @@ const App = () => {
                 token={token} navigate={navigate} 
                 getUsersRoutines={getUsersRoutines} activities={activities}/>} />
                 <Route path ='/EditRoutine/:routineId' element={<EditRoutine token={token} navigate={navigate} myRoutines={myRoutines} getUsersRoutines={getUsersRoutines}/>} />
+                <Route path ='/EditActivityForRoutine/:routineId/:routineActivityId' element={<EditActivityForRoutine token={token} navigate={navigate} myRoutines={myRoutines} getUsersRoutines={getUsersRoutines}/>} />
                 <Route path='/EditActivity/:activityID' element={<EditActivity fetchActivities={fetchActivities} activities={activities} navigate={navigate} token={token}/>}/>
                 <Route path='/CreateNewActivity' element={<CreateNewActivity activities={activities} navigate={navigate} fetchActivities={fetchActivities} token={token}/>} />
            </Routes>

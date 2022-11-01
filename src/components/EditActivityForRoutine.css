@@ -1,0 +1,38 @@
+h1 {
+    font-size: 2em;
+}
+
+.EditActivityForRoutineForm {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    font-size: 1.3em;
+    width: 100%;
+
+}
+
+.EditActivityForRoutineInput {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    margin-right: 0;
+    margin: 1rem;
+}
+
+input {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+span {
+    margin-right: 1em;
+}
+button {
+    margin: 1em;
+}

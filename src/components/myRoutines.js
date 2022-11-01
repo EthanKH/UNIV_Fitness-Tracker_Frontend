@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import './MyRoutines.css';
-import { deleteRoutine, attachActivityToRoutine, deleteActivityFromRoutine, updateActivityForRoutine } from '../api';
+import { deleteRoutine, attachActivityToRoutine, deleteActivityFromRoutine } from '../api';
 
 
 const MyRoutines = ({myRoutines, token, activities, getUsersRoutines}) => {
@@ -28,10 +28,10 @@ const MyRoutines = ({myRoutines, token, activities, getUsersRoutines}) => {
                             <h3>{name}</h3>
                             <p>{goal}</p>
                             <button>
-                            <Link to={`/EditRoutine/${routine.id}`}>Edit</Link> {/**this page should allow us to edit count and duration of activity for routine*/ }
+                            <Link to={`/EditRoutine/${routine.id}`}>Edit Routine</Link> {/**this page should allow us to edit count and duration of activity for routine*/ }
                             </button>
                             <button onClick={(event) => {event.preventDefault(); deleteRoutine(routine.id,token); getUsersRoutines()}
-                                    }>Delete</button>
+                                    }>Delete Routine</button>
                             <div className='activitiesForMyRoutine'>
                             {routine.activities.map (activity => {
                                 
@@ -42,7 +42,7 @@ const MyRoutines = ({myRoutines, token, activities, getUsersRoutines}) => {
                                     <p>{description}</p>
                                     <p>{count}</p>
                                     <p>{duration}</p>
-
+                                    <button><Link to={`/EditActivityForRoutine/${routine.id}/${routineActivityId}`}>Edit Activity For Routine</Link></button>
                                     <button onClick={(event) => {event.preventDefault(); deleteActivityFromRoutine(routineActivityId,token); getUsersRoutines()}
                                     }>Remove Activity</button>
                                 </div>
