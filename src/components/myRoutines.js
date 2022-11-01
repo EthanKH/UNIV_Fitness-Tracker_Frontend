@@ -63,7 +63,8 @@ const MyRoutines = ({myRoutines, token, activities, getUsersRoutines}) => {
                                     <select 
                                         name="activity" 
                                         id="select-activity"
-                                        value={activityOption} 
+                                        placeholder='Any'
+                                        // value={activityOption} 
                                         onChange={(event) => setActivityOption(event.target.value)}>
                                         <option value="any">Any</option>
                                         {allActivities.map((activity) => {
@@ -77,7 +78,7 @@ const MyRoutines = ({myRoutines, token, activities, getUsersRoutines}) => {
                                     <input
                                     type='text'
                                     placeholder='count'
-                                    value={activityCount}
+                                    // value={activityCount}
                                     onChange={(event)=> {setActivityCount(event.target.value)}}
                                     />
                                 </span>
@@ -85,7 +86,7 @@ const MyRoutines = ({myRoutines, token, activities, getUsersRoutines}) => {
                                     <input
                                     type='text'
                                     placeholder='duration'
-                                    value={activityDuration}
+                                    // value={activityDuration}
                                     onChange={(event)=> {setActivityDuration(event.target.value)}}
                                     />
                                 </span>
