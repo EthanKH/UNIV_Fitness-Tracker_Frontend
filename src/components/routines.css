@@ -4,21 +4,42 @@
     color: pink;
 } */
 
-.routinesCard{
-    background-color: pink;
-    color:black;
-    margin: none;
-    border: solid 2px hot palevioletred; 
+.routineAndSearch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.routinesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    flex-wrap: wrap;
+    height: fit-content;
+
+
 }
 
-/* .activitiesCard{
-    background-color: green;
+.routineCard{
+    color:pink;
+    margin: 0.75rem;
+    border-style: solid;
+    border-color: lightpink;
+    border-width: 0.2rem;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+}
+
+.activitiesCard{
     color:pink;
     margin: none;
-    border: solid 2px pink; 
-} */
+    font-size: 0.75em;
+    /* border: dashed 2px pink;  */
+}
 .activitiesCard:nth-child(even){
    
     margin: none;
-    border: solid 2px pink; 
+    border: dashed 2px pink; 
 }

@@ -18,7 +18,6 @@ token ?(
             logout()
         }}>Logout</Link>
         
-<Link className="link" to='/routines/EditRoutine'>Edit Routine</Link>
 <Link className="link" to='/MyRoutines'>My Routines</Link>
 <Link className="link" to='/Activities'>Activities</Link>
 </>

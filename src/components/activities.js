@@ -43,9 +43,11 @@ const Activities = (props) => {
                 {activitiesToDisplay.map(activity => {
                 const {description, name, id} = activity;
                 return <div key={id} className='Activity'>
-                        <h3>{name}</h3>
+                        <h3 className="activityName">{name}</h3>
                         <p className='description'>{description}</p>
+                        <button>
                         <Link to={`/EditActivity/${activity.id}`}>Edit Activity</Link> 
+                        </button>
                         
                         
                         </div>

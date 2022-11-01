@@ -54,8 +54,8 @@ const Routines = ({ routines }) => {
                                         if (isPublic) {
                                             return (
                                                 <div className="activitiesCard" key={routine.id}>
-                                                    <h3>Activity Name{name}</h3>
-                                                    <p>Activity Name: {description}</p>
+                                                    <p>Activity Name: {name}</p>
+                                                    <p>Description: {description}</p>
                                                 </div>
 
                                             )
